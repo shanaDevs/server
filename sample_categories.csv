@@ -1,0 +1,21 @@
+name,description,parent_id,is_active
+Food & Beverages,Food and beverage products,,1
+Biscuits & Cookies,Biscuits cookies and crackers,1,1
+Beverages,Soft drinks juices and water,1,1
+Tea & Coffee,Tea coffee and hot beverages,1,1
+Dairy Products,Milk cheese butter and yogurt,1,1
+Rice & Grains,Rice flour and grain products,1,1
+Spices & Condiments,Spices sauces and condiments,1,1
+Snacks,Chips nuts and snack foods,1,1
+Household & Personal Care,Household and personal care items,,1
+Cleaning Products,Detergents soaps and cleaners,9,1
+Personal Care,Toiletries and cosmetics,9,1
+Baby Products,Baby care items and diapers,9,1
+Health & Wellness,Health and wellness products,,1
+Medicines,Over-the-counter medicines,13,1
+Vitamins & Supplements,Vitamins and dietary supplements,13,1
+First Aid,First aid supplies,13,1
+Electronics,Electronic devices and accessories,,1
+Mobile Accessories,Phone cases chargers and accessories,17,1
+Computer Accessories,Computer peripherals and accessories,17,1
+Home Appliances,Kitchen and home appliances,17,1

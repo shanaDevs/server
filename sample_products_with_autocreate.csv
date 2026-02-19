@@ -1,0 +1,31 @@
+name,product_code,description,category_name,brand_name,supplier_name,supplier_phone,supplier_email,unit_of_measure,cost_price,selling_price,min_stock_level,is_active
+Maliban Gold Marie 80g,4792038010254,Classic tea biscuit,Biscuits & Cookies,Maliban,Maliban Biscuit Suppliers,0771234567,maliban@suppliers.lk,pack,80.00,95.00,20,1
+Munchee Super Cream Cracker 190g,4792038120014,Healthy crackers,Biscuits & Cookies,Munchee,Munchee Distribution,0777654321,munchee@dist.lk,pack,210.00,250.00,15,1
+Elephant House Ginger Beer 1.5L,4792004000111,Local soft drink,Beverages,Elephant House,Beverage Wholesalers Ltd,0773333333,beverages@wholesale.lk,pcs,380.00,450.00,10,1
+Kist Tomato Sauce 400g,4796000451025,Premium tomato sauce,Spices & Condiments,Kist,Spice Merchants,0777777777,spices@merchants.lk,pcs,590.00,700.00,12,1
+Dilmah Premium Tea 100g,4792123000554,Ceylon black tea,Tea & Coffee,Dilmah,Ceylon Tea Traders,0774444444,tea@traders.lk,pack,420.00,500.00,25,1
+Kotmale Full Cream Milk 1L,4792011012345,UHT treated fresh milk,Dairy Products,Kotmale,Dairy Products Lanka,0775555555,dairy@lanka.lk,pcs,410.00,480.00,20,1
+Araliya Keeri Samba 5kg,4792001234567,Premium quality rice,Rice & Grains,Araliya,Rice Mill Suppliers,0776666666,rice@suppliers.lk,pack,1450.00,1650.00,5,1
+Watawala Tea 200g,4792008887776,Ceylon tea blend,Tea & Coffee,Watawala,Ceylon Tea Traders,0774444444,tea@traders.lk,pack,500.00,580.00,15,1
+Astra Margarine 250g,4796000112233,Table margarine spread,Dairy Products,Astra,Dairy Products Lanka,0775555555,dairy@lanka.lk,pcs,530.00,620.00,10,1
+Lankasoy Soya Nuggets 90g,4792006789012,Chicken flavor soya,Snacks,Lankasoy,Maliban Biscuit Suppliers,0771234567,maliban@suppliers.lk,pack,150.00,180.00,30,1
+Cargills Magic Vanilla 1L,4792030001112,Vanilla ice cream,Dairy Products,Cargills,Dairy Products Lanka,0775555555,dairy@lanka.lk,pcs,850.00,980.00,8,1
+Anchor Milk Powder 400g,9410001234567,Full cream milk powder,Dairy Products,Anchor,Dairy Products Lanka,0775555555,dairy@lanka.lk,pack,1050.00,1200.00,20,1
+Pelwatte Butter 200g,4792055000222,Unsalted dairy butter,Dairy Products,Pelwatte,Dairy Products Lanka,0775555555,dairy@lanka.lk,pcs,650.00,750.00,10,1
+Raigam Isi Salt 400g,4792100001112,Iodized table salt,Spices & Condiments,Raigam,Spice Merchants,0777777777,spices@merchants.lk,pack,110.00,130.00,50,1
+Harischandra Coffee 100g,4792111000123,Traditional roasted coffee,Tea & Coffee,Harischandra,Ceylon Tea Traders,0774444444,tea@traders.lk,pack,380.00,450.00,15,1
+Motha Jelly Strawberry 85g,4792015000555,Strawberry flavor dessert,Snacks,Motha,Maliban Biscuit Suppliers,0771234567,maliban@suppliers.lk,pack,180.00,210.00,20,1
+Wijaya Chilli Powder 100g,4792018000444,Ground red chilli,Spices & Condiments,Wijaya,Spice Merchants,0777777777,spices@merchants.lk,pack,280.00,330.00,25,1
+Prima Stella Instant Noodles 80g,4792022000333,Chicken flavored noodles,Snacks,Prima,Maliban Biscuit Suppliers,0771234567,maliban@suppliers.lk,pack,120.00,140.00,40,1
+Ritzbury Revello Milk 50g,4792044000111,Milk chocolate bar,Snacks,Ritzbury,Maliban Biscuit Suppliers,0771234567,maliban@suppliers.lk,pcs,180.00,210.00,30,1
+Highland Processed Cheese 200g,4792033000222,Local dairy cheese,Dairy Products,Highland,Dairy Products Lanka,0775555555,dairy@lanka.lk,pcs,750.00,880.00,10,1
+Serendib Flour 1kg,4792025000666,All purpose wheat flour,Rice & Grains,Serendib,Rice Mill Suppliers,0776666666,rice@suppliers.lk,kg,210.00,240.00,20,1
+Clogard Toothpaste 120g,4792066000111,Clove oil toothpaste,Personal Care,Clogard,Cosmetics Distributors,0779999999,cosmetics@dist.lk,pcs,240.00,280.00,25,1
+Baby Cheramy Soap 75g,4792066000222,Mild baby soap,Baby Products,Baby Cheramy,Cosmetics Distributors,0779999999,cosmetics@dist.lk,pcs,130.00,150.00,35,1
+Signal Strong Teeth 120g,4792066000333,Fluoride toothpaste,Personal Care,Signal,Cosmetics Distributors,0779999999,cosmetics@dist.lk,pcs,250.00,290.00,25,1
+Lifebuoy Total 100g,4792066000444,Antibacterial soap,Personal Care,Lifebuoy,Household Goods Importers,0778888888,household@importers.lk,pcs,145.00,170.00,50,1
+Sunlight Soap 115g,4792066000555,Laundry and wash soap,Cleaning Products,Sunlight,Household Goods Importers,0778888888,household@importers.lk,pcs,110.00,130.00,100,1
+Vim Dishwash Liquid 500ml,4792066000666,Lemon grease remover,Cleaning Products,Vim,Household Goods Importers,0778888888,household@importers.lk,pcs,480.00,560.00,15,1
+Surf Excel Matic 1kg,4792066000777,Laundry detergent powder,Cleaning Products,Surf Excel,Household Goods Importers,0778888888,household@importers.lk,kg,1150.00,1320.00,10,1
+Dettol Antiseptic 500ml,5000158063331,Disinfectant liquid,Personal Care,Dettol,Cosmetics Distributors,0779999999,cosmetics@dist.lk,pcs,1450.00,1680.00,5,1
+Pears Baby Lotion 200ml,4792066000888,Moisturizing baby lotion,Baby Products,Pears,Cosmetics Distributors,0779999999,cosmetics@dist.lk,pcs,680.00,790.00,10,1

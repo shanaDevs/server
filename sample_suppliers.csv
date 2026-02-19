@@ -1,0 +1,11 @@
+name,contact_person,phone,email,address,city,state,country,postal_code,tax_id,payment_terms,credit_limit,notes,is_active
+Maliban Biscuit Suppliers,Nimal Perera,0771234567,maliban@suppliers.lk,123 Galle Road,Colombo,Western,Sri Lanka,10100,TAX001,Net 30,500000.00,Premium biscuit supplier,1
+Munchee Distribution,Sunil Fernando,0777654321,munchee@dist.lk,456 Kandy Road,Kandy,Central,Sri Lanka,20000,TAX002,Net 45,750000.00,Fast delivery service,1
+Beverage Wholesalers Ltd,Kamal Silva,0773333333,beverages@wholesale.lk,789 Negombo Road,Negombo,Western,Sri Lanka,11500,TAX003,Net 30,1000000.00,Soft drinks and juices,1
+Ceylon Tea Traders,Anura Jayawardena,0774444444,tea@traders.lk,321 Nuwara Eliya Road,Nuwara Eliya,Central,Sri Lanka,22200,TAX004,Net 60,300000.00,Premium Ceylon tea,1
+Dairy Products Lanka,Chaminda Rathnayake,0775555555,dairy@lanka.lk,654 Kurunegala Road,Kurunegala,North Western,Sri Lanka,60000,TAX005,Net 30,600000.00,Fresh dairy products,1
+Rice Mill Suppliers,Bandula Wijesinghe,0776666666,rice@suppliers.lk,987 Anuradhapura Road,Anuradhapura,North Central,Sri Lanka,50000,TAX006,Net 45,800000.00,Quality rice products,1
+Spice Merchants,Ranjith Gunasekara,0777777777,spices@merchants.lk,147 Matara Road,Matara,Southern,Sri Lanka,81000,TAX007,Net 30,250000.00,Authentic Sri Lankan spices,1
+Household Goods Importers,Pradeep Mendis,0778888888,household@importers.lk,258 Gampaha Road,Gampaha,Western,Sri Lanka,11000,TAX008,Net 60,900000.00,Quality household items,1
+Cosmetics Distributors,Dilini Amarasinghe,0779999999,cosmetics@dist.lk,369 Ratnapura Road,Ratnapura,Sabaragamuwa,Sri Lanka,70000,TAX009,Net 30,400000.00,Beauty and personal care,1
+Electronics Wholesale,Rohan Jayasuriya,0771111111,electronics@wholesale.lk,741 Batticaloa Road,Batticaloa,Eastern,Sri Lanka,30000,TAX010,Net 45,1200000.00,Electronic goods supplier,1

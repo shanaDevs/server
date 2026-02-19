@@ -1,0 +1,2463 @@
+{
+	"info": {
+		"name": "POS System - Complete API Collection",
+		"description": "Complete API collection for Point of Sale (POS) System with MERN Stack\n\nFeatures:\n- User Management & Authentication\n- Role-Based Access Control (RBAC)\n- Customer Management (Loyalty & Credit)\n- Product & Inventory Management\n- Supplier & Company Management\n- Purchase Orders & GRN\n- Sales Management (Returns & Refunds)\n- Reports & Analytics\n\nBase URL: http://localhost:3000/api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"0771234567\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"username\": \"johndoe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"roleId\": 1,\n  \"address\": \"123 Main Street, Colombo\",\n  \"nic\": \"199512345678\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"if (response.token) {",
+									"    pm.collectionVariables.set('token', response.token);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Current User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users?page=1&limit=20&search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe Updated\",\n  \"email\": \"john.updated@example.com\",\n  \"phone\": \"0771234567\",\n  \"address\": \"456 New Street, Colombo\",\n  \"roleId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Toggle User Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1/toggle-status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"toggle-status"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Get All Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Role by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/roles/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Store Manager\",\n  \"description\": \"Manages store operations and inventory\",\n  \"permissions\": [1, 2, 3, 5, 7, 10]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/roles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"roleName\": \"Senior Cashier\",\n  \"description\": \"Senior cashier with additional permissions\",\n  \"permissions\": [1, 2, 5, 8]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/roles/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles",
+								"3"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/roles/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles",
+								"3"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Permissions",
+			"item": [
+				{
+					"name": "Get All Permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/permissions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"permissions"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Permission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"permissionName\": \"manage_promotions\",\n  \"description\": \"Can create and manage promotional campaigns\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/permissions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"permissions"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Get All Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/companies?page=1&limit=20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Company by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/companies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"ABC Trading (Pvt) Ltd\",\n  \"registrationNumber\": \"PV12345\",\n  \"taxNumber\": \"123456789V\",\n  \"email\": \"info@abctrading.lk\",\n  \"phone\": \"0112345678\",\n  \"address\": \"No. 123, Galle Road, Colombo 03\",\n  \"city\": \"Colombo\",\n  \"country\": \"Sri Lanka\",\n  \"website\": \"https://www.abctrading.lk\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/companies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"ABC Trading (Pvt) Ltd - Updated\",\n  \"phone\": \"0112345679\",\n  \"email\": \"contact@abctrading.lk\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/companies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/companies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories?page=1&limit=20&parentId=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "parentId",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyId\": 1,\n  \"categoryName\": \"Electronics\",\n  \"categoryCode\": \"ELEC\",\n  \"description\": \"Electronic items and accessories\",\n  \"parentId\": null\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Subcategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyId\": 1,\n  \"categoryName\": \"Mobile Phones\",\n  \"categoryCode\": \"ELEC-MOB\",\n  \"description\": \"Smartphones and feature phones\",\n  \"parentId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"categoryName\": \"Consumer Electronics\",\n  \"description\": \"All consumer electronic items\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"2"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "Get All Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers?page=1&limit=20&search=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Supplier by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyId\": 1,\n  \"supplierCode\": \"SUP001\",\n  \"name\": \"Tech Distributors (Pvt) Ltd\",\n  \"contactPerson\": \"Kamal Perera\",\n  \"email\": \"kamal@techdist.lk\",\n  \"phone\": \"0771234567\",\n  \"address\": \"No. 45, Industrial Zone, Katunayake\",\n  \"city\": \"Katunayake\",\n  \"country\": \"Sri Lanka\",\n  \"taxNumber\": \"987654321V\",\n  \"paymentTerms\": \"Net 30\",\n  \"creditLimit\": 500000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/suppliers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Tech Distributors Ltd - Updated\",\n  \"contactPerson\": \"Nimal Silva\",\n  \"phone\": \"0771234568\",\n  \"creditLimit\": 750000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Toggle Supplier Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/1/toggle-status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"1",
+								"toggle-status"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products?page=1&limit=20&search=&categoryId=&minPrice=&maxPrice=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "categoryId",
+									"value": ""
+								},
+								{
+									"key": "minPrice",
+									"value": ""
+								},
+								{
+									"key": "maxPrice",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyId\": 1,\n  \"categoryId\": 1,\n  \"productCode\": \"PROD001\",\n  \"productName\": \"Samsung Galaxy A54 5G\",\n  \"description\": \"6.4 inch Super AMOLED, 8GB RAM, 256GB Storage\",\n  \"barcode\": \"8801643806729\",\n  \"unit\": \"PCS\",\n  \"costPrice\": 85000,\n  \"sellingPrice\": 125000,\n  \"mrp\": 135000,\n  \"taxPercentage\": 15,\n  \"reorderLevel\": 5,\n  \"minStockLevel\": 3,\n  \"brand\": \"Samsung\",\n  \"model\": \"Galaxy A54 5G\",\n  \"warranty\": \"1 Year Manufacturer Warranty\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productName\": \"Samsung Galaxy A54 5G - Updated\",\n  \"sellingPrice\": 119000,\n  \"reorderLevel\": 10\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Brands",
+			"item": [
+				{
+					"name": "Get All Brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Brand by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/brands/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Dell\",\n  \"description\": \"Dell Technologies - Leading computer and technology manufacturer\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand - Samsung",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Samsung\",\n  \"description\": \"Samsung Electronics - Global leader in mobile phones and electronics\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand - Apple",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Apple\",\n  \"description\": \"Apple Inc. - Premium consumer electronics and computers\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand - HP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"HP\",\n  \"description\": \"HP Inc. - Hewlett-Packard computers and printers\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Brand - Lenovo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Lenovo\",\n  \"description\": \"Lenovo Group - ThinkPad and IdeaPad laptops manufacturer\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Brand",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Dell Technologies\",\n  \"description\": \"Dell Technologies Inc. - Enterprise IT solutions and personal computers\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/brands/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Brand",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/brands/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Models",
+			"item": [
+				{
+					"name": "Get All Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Models by Brand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/models?brandId=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Model by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/models/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Model - Dell XPS 15",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"XPS 15\",\n  \"brandId\": 1,\n  \"description\": \"High-performance 15-inch laptop with premium build quality\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Model - Samsung Galaxy A54",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Galaxy A54 5G\",\n  \"brandId\": 2,\n  \"description\": \"Mid-range 5G smartphone with excellent camera\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Model - iPhone 15 Pro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"iPhone 15 Pro\",\n  \"brandId\": 3,\n  \"description\": \"Premium flagship smartphone with titanium design\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Model",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"XPS 15 9530\",\n  \"description\": \"Latest XPS 15 with 13th Gen Intel processors\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/models/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Model",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/models/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"models",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase Orders",
+			"item": [
+				{
+					"name": "Get All Purchase Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/purchase-orders?page=1&limit=20&status=&supplierId=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase-orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "supplierId",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Purchase Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/purchase-orders/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase-orders",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Purchase Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"supplierId\": 1,\n  \"orderDate\": \"2025-12-03\",\n  \"expectedDeliveryDate\": \"2025-12-10\",\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantityOrdered\": 20,\n      \"unitPrice\": 85000,\n      \"taxPercentage\": 15\n    },\n    {\n      \"productId\": 2,\n      \"quantityOrdered\": 15,\n      \"unitPrice\": 45000,\n      \"taxPercentage\": 15\n    }\n  ],\n  \"discountPercentage\": 2,\n  \"notes\": \"Urgent order - Priority delivery required\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/purchase-orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase-orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Purchase Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\",\n  \"notes\": \"Order processed and completed\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/purchase-orders/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase-orders",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Purchase Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/purchase-orders/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"purchase-orders",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "GRN (Goods Received Notes)",
+			"item": [
+				{
+					"name": "Get All GRNs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/grns?page=1&limit=20&purchaseOrderId=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grns"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "purchaseOrderId",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get GRN by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/grns/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grns",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create GRN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"purchaseOrderId\": 1,\n  \"receivedDate\": \"2025-12-03\",\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantityReceived\": 20,\n      \"quantityAccepted\": 20,\n      \"quantityRejected\": 0\n    },\n    {\n      \"productId\": 2,\n      \"quantityReceived\": 15,\n      \"quantityAccepted\": 14,\n      \"quantityRejected\": 1,\n      \"notes\": \"1 unit damaged\"\n    }\n  ],\n  \"notes\": \"All items received in good condition except 1 damaged unit\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/grns",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grns"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update GRN",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"notes\": \"GRN updated - Quality check completed\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/grns/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grns",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete GRN",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/grns/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"grns",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Get All Inventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/inventory?page=1&limit=20&productId=&lowStock=false",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "productId",
+									"value": ""
+								},
+								{
+									"key": "lowStock",
+									"value": "false"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory by Product ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/inventory/product/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory",
+								"product",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Adjust Stock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": 1,\n  \"transactionType\": \"adjustment\",\n  \"quantityIn\": 10,\n  \"quantityOut\": 0,\n  \"notes\": \"Stock adjustment after physical count\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/inventory/adjust",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory",
+								"adjust"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Inventory Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/inventory/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers?page=1&limit=20&search=&customerType=&isActive=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "customerType",
+									"value": ""
+								},
+								{
+									"key": "isActive",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerName\": \"Saman Jayasinghe\",\n  \"email\": \"saman.j@example.com\",\n  \"phone\": \"0771234567\",\n  \"address\": \"No. 25, Temple Road, Nugegoda\",\n  \"city\": \"Nugegoda\",\n  \"country\": \"Sri Lanka\",\n  \"customerType\": \"retail\",\n  \"creditLimit\": 50000,\n  \"discountPercentage\": 5,\n  \"notes\": \"Regular customer - VIP treatment\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerName\": \"Saman Jayasinghe - Updated\",\n  \"phone\": \"0771234568\",\n  \"customerType\": \"vip\",\n  \"creditLimit\": 100000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Toggle Customer Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/toggle-status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"toggle-status"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Purchase History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/purchase-history?page=1&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"purchase-history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Loyalty Points",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/loyalty-points",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"loyalty-points"
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Loyalty Points",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"points\": 100,\n  \"referenceType\": \"manual\",\n  \"notes\": \"Bonus points for customer appreciation\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/loyalty-points/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"loyalty-points",
+								"add"
+							]
+						}
+					}
+				},
+				{
+					"name": "Redeem Loyalty Points",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"points\": 50,\n  \"referenceType\": \"manual\",\n  \"notes\": \"Points redeemed for discount\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/loyalty-points/redeem",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"loyalty-points",
+								"redeem"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Credit History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/credit-history?status=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"credit-history"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Issue Credit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 25000,\n  \"referenceType\": \"manual\",\n  \"dueDate\": \"2026-01-03\",\n  \"notes\": \"Credit issued for bulk purchase\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/credit/issue",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"credit",
+								"issue"
+							]
+						}
+					}
+				},
+				{
+					"name": "Receive Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 10000,\n  \"paymentMethod\": \"cash\",\n  \"notes\": \"Partial payment received\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/credit/payment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"credit",
+								"payment"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Customer Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/1/statistics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"statistics"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "Get All Sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sales?page=1&limit=20&search=&customerId=&paymentStatus=&saleStatus=&startDate=&endDate=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "customerId",
+									"value": ""
+								},
+								{
+									"key": "paymentStatus",
+									"value": ""
+								},
+								{
+									"key": "saleStatus",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Sale by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sales/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Sale - Walk-in Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 1,\n      \"unitPrice\": 125000,\n      \"unit\": \"PCS\",\n      \"discountPercentage\": 0,\n      \"taxPercentage\": 15\n    },\n    {\n      \"productId\": 2,\n      \"quantity\": 2,\n      \"unitPrice\": 3500,\n      \"unit\": \"PCS\",\n      \"discountPercentage\": 10,\n      \"taxPercentage\": 15\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": \"cash\",\n      \"amount\": 135000\n    }\n  ],\n  \"discountPercentage\": 0,\n  \"taxPercentage\": 0,\n  \"saleType\": \"retail\",\n  \"notes\": \"Walk-in customer purchase\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Sale - Registered Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2,\n      \"unitPrice\": 125000,\n      \"unit\": \"PCS\",\n      \"discountPercentage\": 5,\n      \"taxPercentage\": 15\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": \"card\",\n      \"amount\": 200000,\n      \"cardType\": \"Visa\",\n      \"cardLastFour\": \"1234\"\n    }\n  ],\n  \"discountPercentage\": 2,\n  \"taxPercentage\": 0,\n  \"loyaltyPointsRedeemed\": 500,\n  \"saleType\": \"retail\",\n  \"customerNotes\": \"Customer requested gift wrapping\",\n  \"notes\": \"VIP customer - priority service\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Sale - Credit Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 3,\n      \"unitPrice\": 125000,\n      \"unit\": \"PCS\",\n      \"taxPercentage\": 15\n    }\n  ],\n  \"payments\": [\n    {\n      \"paymentMethod\": \"cash\",\n      \"amount\": 100000\n    }\n  ],\n  \"discountPercentage\": 3,\n  \"saleType\": \"wholesale\",\n  \"notes\": \"Partial payment - Remaining on credit\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Sale Notes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"notes\": \"Sale updated - Customer requested invoice copy\",\n  \"customerNotes\": \"Send receipt to email\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Cancel Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reason\": \"Customer requested cancellation - Product not available in preferred color\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales/1/cancel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1",
+								"cancel"
+							]
+						}
+					}
+				},
+				{
+					"name": "Process Sale Return - Full",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"saleItemId\": 1,\n      \"quantity\": 1\n    }\n  ],\n  \"reason\": \"Product defective - Customer returned within warranty period\",\n  \"refundMethod\": \"cash\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales/1/return",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1",
+								"return"
+							]
+						}
+					}
+				},
+				{
+					"name": "Process Sale Return - Partial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"saleItemId\": 2,\n      \"quantity\": 1\n    }\n  ],\n  \"reason\": \"Customer returned 1 out of 2 items\",\n  \"refundMethod\": \"card\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales/1/return",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1",
+								"return"
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Payment to Credit Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paymentMethod\": \"bank_transfer\",\n  \"amount\": 50000,\n  \"referenceNumber\": \"TRX123456789\",\n  \"bankName\": \"Commercial Bank\",\n  \"notes\": \"Payment received via bank transfer\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sales/1/payments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1",
+								"payments"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Daily Sales Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sales/reports/daily?date=2025-12-03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"reports",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-12-03"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Sale",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sales/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sales",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Audit Logs",
+			"item": [
+				{
+					"name": "Get All Audit Logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/audit-logs?page=1&limit=20&userId=&action=&startDate=&endDate=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"audit-logs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "userId",
+									"value": ""
+								},
+								{
+									"key": "action",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Audit Log by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/audit-logs/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"audit-logs",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get User Activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/audit-logs/user/1?startDate=2025-12-01&endDate=2025-12-03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"audit-logs",
+								"user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2025-12-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-12-03"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "API Health Check",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}

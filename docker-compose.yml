@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  pos-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pos-backend
+    ports:
+      - "${SERVER_PORT:-3001}:${SERVER_PORT:-3001}"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-3001}
+      - CORS_ORIGIN=${CORS_ORIGIN:-*}
+      - DB_HOST=${DB_HOST:-72.60.195.186}
+      - DB_PORT=${DB_PORT:-3380}
+      - DB_NAME=${DB_NAME:-premius_distributors}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-AllPos145}
+      - JWT_SECRET=pos_refresh_token_secret_key_secure
+      - JWT_EXPIRES_IN=15m
+      - JWT_REFRESH_SECRET=pos_refresh_token_secret_key_secure
+      - JWT_REFRESH_EXPIRES_IN=30d
+      - CLOUDINARY_CLOUD_NAME=dcdovjcm2
+      - CLOUDINARY_API_KEY=198378436884565
+      - CLOUDINARY_API_SECRET=GdDMhmxH4nF5Jc9gJkumlMVRda4
+      - EMAIL_USER=shyamalpushpakumara10@gmail.com
+      - EMAIL_PASS=hxcpddnxlhpmmrur
+      - GMAIL_CLIENT_ID=392263118414-n4r69pdsk6ata380781djaf07j8old20.apps.googleusercontent.com
+      - GMAIL_CLIENT_SECRET=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
+      - GMAIL_REDIRECT_URI=http://localhost:5000/api/auth/google/callback
+      - GMAIL_REDIRECT_URI=http://localhost:5000/api/auth/google/callback
+    volumes:
+      - uploads-data:/usr/src/app/uploads
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - pos-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: pos-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-AllPos145}
+      - MYSQL_DATABASE=${DB_NAME:-premius_distributors}
+      - MYSQL_USER=${DB_USER:-root}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-AllPos145}
+    ports:
+      - "${DB_PORT:-3380}:3380"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - pos-network
+
+volumes:
+  mysql-data:
+  uploads-data:
+
+
+networks:
+  pos-network:
+    driver: bridge

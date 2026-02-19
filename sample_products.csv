@@ -1,0 +1,51 @@
+name,product_code,description,category_id,unit_of_measure,cost_price,min_stock_level,supplier_id,brand_id,branch_id,is_active
+Maliban Gold Marie 80g,4792038010254,Classic tea biscuit,1,pack,80.00,20,1,1,1,1
+Munchee Super Cream Cracker 190g,4792038120014,Healthy crackers,1,pack,210.00,15,1,1,1,1
+Elephant House Ginger Beer 1.5L,4792004000111,Local soft drink,2,pcs,380.00,10,1,1,1,1
+Kist Tomato Sauce 400g,4796000451025,Premium tomato sauce,3,pcs,590.00,12,1,1,1,1
+Dilmah Premium Tea 100g,4792123000554,Ceylon black tea,4,pack,420.00,25,1,1,1,1
+Kotmale Full Cream Milk 1L,4792011012345,UHT treated fresh milk,5,pcs,410.00,20,1,1,1,1
+Araliya Keeri Samba 5kg,4792001234567,Premium quality rice,6,pack,1450.00,5,1,1,1,1
+Watawala Tea 200g,4792008887776,Ceylon tea blend,4,pack,500.00,15,1,1,1,1
+Astra Margarine 250g,4796000112233,Table margarine spread,5,pcs,530.00,10,1,1,1,1
+Lankasoy Soya Nuggets 90g,4792006789012,Chicken flavor soya,6,pack,150.00,30,1,1,1,1
+Cargills Magic Vanilla 1L,4792030001112,Vanilla ice cream,5,pcs,850.00,8,1,1,1,1
+Anchor Milk Powder 400g,9410001234567,Full cream milk powder,5,pack,1050.00,20,1,1,1,1
+Pelwatte Butter 200g,4792055000222,Unsalted dairy butter,5,pcs,650.00,10,1,1,1,1
+Raigam Isi Salt 400g,4792100001112,Iodized table salt,3,pack,110.00,50,1,1,1,1
+Harischandra Coffee 100g,4792111000123,Traditional roasted coffee,4,pack,380.00,15,1,1,1,1
+Motha Jelly Strawberry 85g,4792015000555,Strawberry flavor dessert,3,pack,180.00,20,1,1,1,1
+Wijaya Chilli Powder 100g,4792018000444,Ground red chilli,3,pack,280.00,25,1,1,1,1
+Prima Stella Instant Noodles 80g,4792022000333,Chicken flavored noodles,6,pack,120.00,40,1,1,1,1
+Ritzbury Revello Milk 50g,4792044000111,Milk chocolate bar,7,pcs,180.00,30,1,1,1,1
+Highland Processed Cheese 200g,4792033000222,Local dairy cheese,5,pcs,750.00,10,1,1,1,1
+Serendib Flour 1kg,4792025000666,All purpose wheat flour,6,kg,210.00,20,1,1,1,1
+7 Star Wheat Flour 1kg,4792025000777,Premium wheat flour,6,kg,215.00,20,1,1,1,1
+Clogard Toothpaste 120g,4792066000111,Clove oil toothpaste,8,pcs,240.00,25,1,1,1,1
+Baby Cheramy Soap 75g,4792066000222,Mild baby soap,9,pcs,130.00,35,1,1,1,1
+Signal Strong Teeth 120g,4792066000333,Fluoride toothpaste,8,pcs,250.00,25,1,1,1,1
+Lifebuoy Total 100g,4792066000444,Antibacterial soap,8,pcs,145.00,50,1,1,1,1
+Sunlight Soap 115g,4792066000555,Laundry and wash soap,8,pcs,110.00,100,1,1,1,1
+Vim Dishwash Liquid 500ml,4792066000666,Lemon grease remover,8,pcs,480.00,15,1,1,1,1
+Surf Excel Matic 1kg,4792066000777,Laundry detergent powder,8,kg,1150.00,10,1,1,1,1
+Dettol Antiseptic 500ml,5000158063331,Disinfectant liquid,8,pcs,1450.00,5,1,1,1,1
+Pears Baby Lotion 200ml,4792066000888,Moisturizing baby lotion,9,pcs,680.00,10,1,1,1,1
+Janet Ayurvedic Shampoo 200ml,4792077000111,Herbal hair cleanser,8,pcs,550.00,15,1,1,1,1
+Link Samahan 10 Pack,4792088000111,Herbal health drink,4,pack,450.00,100,1,1,1,1
+Siddhalepa Balm 50g,4792088000222,Ayurvedic pain balm,10,pcs,320.00,40,1,1,1,1
+MD Mixed Fruit Jam 300g,4792099000111,Fruit preserve spread,3,pcs,490.00,15,1,1,1,1
+Smak Nectar Mango 200ml,4792101000111,Mango fruit drink,2,pcs,110.00,48,1,1,1,1
+CBL Munchee Tikiri Marie 75g,4792038010555,Tea biscuits for kids,1,pack,70.00,50,1,1,1,1
+Maliban Chocolate Biscuit 100g,4792038010888,Cream filled biscuit,1,pack,180.00,20,1,1,1,1
+Kandos Cashew Chocolate 100g,4792102000111,Premium cashew bar,7,pcs,550.00,15,1,1,1,1
+Tiara Layer Cake 40g,4792038010999,Vanilla sponge cake,1,pcs,60.00,60,1,1,1,1
+Stassen Green Tea 50g,4792103000111,Pure green tea bags,4,pack,580.00,12,1,1,1,1
+Renuka Coconut Milk 400ml,4792104000111,Canned coconut milk,3,pcs,420.00,20,1,1,1,1
+Maggi Coconut Milk Powder 300g,4792104000222,Instant coconut powder,3,pack,850.00,15,1,1,1,1
+Edirisinghe Coconut Oil 1L,4792105000111,Pure white coconut oil,3,pcs,850.00,10,1,1,1,1
+Fortune Vegetable Oil 1L,4792105000222,Refined cooking oil,3,pcs,720.00,20,1,1,1,1
+Marina Corn Oil 1L,4792105000333,Healthy cooking oil,3,pcs,1250.00,8,1,1,1,1
+Diamond Eggs 10s,4792106000111,Fresh farm eggs,5,pack,420.00,30,1,1,1,1
+Mylo Energy Drink 200ml,4792011012555,Malt chocolate drink,2,pcs,130.00,24,1,1,1,1
+Diva Detergent Soap 100g,4792066000999,Budget laundry soap,8,pcs,85.00,100,1,1,1,1
+Velona Cuddles Size L 10s,4792107000111,Baby diapers,9,pack,1650.00,10,1,1,1,1

@@ -1,0 +1,70 @@
+{
+    "entryFile": "src/app.js",
+    "noImplicitAdditionalProperties": "ignore",
+    "controllerPathGlobs": [
+        "src/controllers/tsoa/**/*.ts",
+        "src/controllers/tsoa/**/*.js"
+    ],
+    "spec": {
+        "outputDirectory": "public",
+        "specVersion": 3,
+        "name": "POS System API",
+        "version": "2.0.0",
+        "description": "A comprehensive RESTful API for Point of Sale (POS) System with advanced inventory, sales, and customer management built with Express, MySQL, and Sequelize",
+        "license": "ISC",
+        "contact": {
+            "name": "API Support",
+            "email": "support@Dartcodes.com"
+        },
+        "servers": [
+            {
+                "url": "http://localhost:3000",
+                "description": "Development server"
+            },
+            {
+                "url": "https://api.Dartcodes.com",
+                "description": "Production server"
+            }
+        ],
+        "securityDefinitions": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "Enter your JWT token"
+            }
+        },
+        "tags": [
+            {
+                "name": "Health",
+                "description": "System health check and status endpoints"
+            },
+            {
+                "name": "Products",
+                "description": "Product catalog and inventory management"
+            },
+            {
+                "name": "Users",
+                "description": "User management and authentication endpoints"
+            },
+            {
+                "name": "Sales",
+                "description": "Sales transactions and POS operations"
+            },
+            {
+                "name": "Customers",
+                "description": "Customer management with loyalty and credit tracking"
+            }
+        ]
+    },
+    "routes": {
+        "routesDir": "src/routes/tsoa",
+        "middleware": "express",
+        "authenticationModule": "./src/middlewares/tsoaAuth.js",
+        "iocModule": "./src/utils/ioc.js",
+        "basePath": "/api"
+    },
+    "ignore": [
+        "**/node_modules/**"
+    ]
+}
